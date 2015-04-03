@@ -64,7 +64,7 @@ window.Game = (function() {
 		this.player.reset();
 		this.pipe.reset();
 		if(!mute){
-			document.getElementById("Music").load();
+			document.getElementById('Music').load();
 		}
 		score = 0;
 		$( '.Score' ).text( ''+ score );
@@ -77,7 +77,7 @@ window.Game = (function() {
 		this.isPlaying = false;
 		if(!mute){
 			document.getElementById('Die').play();
-			document.getElementById("Music").pause();
+			document.getElementById('Music').pause();
 		}
 		// Should be refactored into a Scoreboard class.
 		var that = this;
@@ -108,16 +108,16 @@ window.Game = (function() {
 		}
 	};
 
-	$( ".Mute" ).click(function() {
+	$( '.Mute' ).click(function() {
 		if(mute){
-			document.getElementById("Music").play();
-			$(".Mute").attr("src","styles/Images/muteoff.png");
+			document.getElementById('Music').play();
+			$('.Mute').attr('src','styles/Images/muteoff.png');
 		}
 		else{
-			document.getElementById("Music").pause();
-			$(".Mute").attr("src","styles/Images/muteon.png");
+			document.getElementById('Music').pause();
+			$('.Mute').attr('src','styles/Images/muteon.png');
 		}
-  		mute = !mute;
+		mute = !mute;
 	});
 
 	/**
