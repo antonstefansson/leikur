@@ -7,9 +7,15 @@ window.Game = (function() {
 	 * @param {Element} el jQuery element containing the game.
 	 * @constructor
 	 */
+
+	var score = 0;
+	var topScore = 0;
+	var mute = false;
+
 	var Game = function(el) {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
+		this.pipe = new window.Pipe(this.el.find('.Pipes'), this, this.player);
 		this.isPlaying = false;
 
 		// Cache a bound onFrame since we need it each frame.
@@ -33,6 +39,7 @@ window.Game = (function() {
 
 		// Update game entities.
 		this.player.onFrame(delta);
+		this.pipe.onFrame(delta);
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
@@ -43,7 +50,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.start = function() {
 		this.reset();
-
+		this.el.find('.GameGround').addClass('Move');
 		// Restart the onFrame loop
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
@@ -55,6 +62,12 @@ window.Game = (function() {
 	 */
 	Game.prototype.reset = function() {
 		this.player.reset();
+		this.pipe.reset();
+		if(!mute){
+			document.getElementById("Music").load();
+		}
+		score = 0;
+		$( '.Score' ).text( ''+ score );
 	};
 
 	/**
@@ -62,10 +75,22 @@ window.Game = (function() {
 	 */
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
-
+		if(!mute){
+			document.getElementById('Die').play();
+			document.getElementById("Music").pause();
+		}
 		// Should be refactored into a Scoreboard class.
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');
+		this.el.find('.GameGround').removeClass('Move');
+	
+		if(score > topScore){
+			topScore = score;
+		}
+		$( '.Cur' ).text( ''+ score );
+		$( '.Top' ).text( ''+ topScore );
+		$( '.Score' ).text('');
+
 		scoreboardEl
 			.addClass('is-visible')
 			.find('.Scoreboard-restart')
@@ -74,6 +99,26 @@ window.Game = (function() {
 					that.start();
 				});
 	};
+
+	Game.prototype.addToScore = function(){
+		score++;
+		$( '.Score' ).text( ''+ score );
+		if(!mute){
+			document.getElementById('Point').play();
+		}
+	};
+
+	$( ".Mute" ).click(function() {
+		if(mute){
+			document.getElementById("Music").play();
+			$(".Mute").attr("src","styles/Images/muteoff.png");
+		}
+		else{
+			document.getElementById("Music").pause();
+			$(".Mute").attr("src","styles/Images/muteon.png");
+		}
+  		mute = !mute;
+	});
 
 	/**
 	 * Some shared constants.

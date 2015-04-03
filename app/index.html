@@ -12,7 +12,6 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
@@ -24,14 +23,44 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        <Video id="Point" controls>
+            <source src="styles/sfx_point.ogg" type="audio/ogg">
+        </Video>
+        <Video id="Die" controls>
+            <source src="styles/sfx_hit.ogg" type="audio/ogg">
+        </Video>
+        <Video id="Music" controls autoplay>
+            <source src="styles/Life of Riley.mp3" type="audio/mp3">
+        </Video>
+
         <div class="GameCanvas">
+            <img class="Backgrounda" src="styles/Images/background.png"></img>
+            <img class="Backgroundb" src="styles/Images/background.png"></img>
             <div class="Player"></div>
             
+            <div class="Pipes">
+                <div id="pipe1"></div>
+                <div id="pipe2"></div>
+                <div id="pipe3"></div>
+                <div id="pipe4"></div>
+                <div id="pipe5"></div>
+                <div id="pipe6"></div>
+            </div>
+            <div class="GameGround Move"></div>
+
+            <p class="Score">score</p>
             <div class="Scoreboard">
+                <p class="SScore">Score:</p>
+                <p class="SScore Cur"></p>
+                <p class="SScore">Top Score:</p>
+                <p class="SScore Top"></p>
                 <button class="Scoreboard-restart">
                     <span class="Scoreboard-restartText">Restart</span>
                 </button>
             </div>
+
+            <img class="Mute" src="styles/Images/muteoff.png"></img>
+
         </div>
 
         <!-- build:js scripts/vendor.js -->
@@ -46,7 +75,7 @@
         <script src="scripts/game.js"></script>
         <script src="scripts/player.js"></script>
         <script src="scripts/utils.js"></script>
-        <script src="scripts/phaser.min.js"></script>
+        <script src="scripts/pipe.js"></script>
         <!-- endbuild -->
 </body>
 </html>
