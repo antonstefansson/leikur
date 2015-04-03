@@ -6,11 +6,7 @@ window.Controls = (function() {
      * Key codes we're interested in.
      */
     var KEYS = {
-        32: 'space',
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
+        32: 'space'
     };
 
     /**
