@@ -15,10 +15,42 @@
 	width: 40em;
 	margin-left: -20em;
 	box-sizing: border-box;
-	background: purple;
+	background: #E0D897;
 	text-align: center;
+	border-radius: 10px;
+	border-style: solid;
+    border-width: 2px;
 	-webkit-transform: translate(0, -40em);
 	-webkit-transition: -webkit-transform 0.5s;
+}
+
+.SScore {
+	font-family: FlappyFont, serif;
+	font-size: 2.4em;
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.Score {
+	position: absolute;
+	left: 47%;
+	top: -0.5em;
+	color: white;
+	font-family: FlappyFont;
+	font-size: 10em;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.Mute {
+	position: absolute;
+	width: 5em;
+	height: 5em;
+	right: 2%;
+	top: 2%;
+}
+
+video { 
+   display:none;
 }
 
 /**
@@ -29,15 +61,16 @@
 }
 
 .Scoreboard-restart {
-	margin-top: 20em;
+	margin-top: 1.5em;
 	font-size: inherit;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	padding: 0.4em 1.5em;
-	border: 0.2em solid white;
+	border: 0.2em solid;
 	background: none;
 	cursor: pointer;
 }
 .Scoreboard-restartText {
-font-family: 'Comic Sans MS', serif;
+font-family: FlappyFont, serif;
 font-size: 2.4em;
 color: white;
 }
@@ -60,5 +93,77 @@ height: 57.6em;
 margin-left: -51.2em;
 margin-top: -28.8em;
 overflow: hidden;
-background: red;
+background: linear-gradient(cyan, white);
+}
+.Backgrounda {
+	width: auto;
+	height: 57.6em;
+	bottom: 0px;
+	position: absolute;
+	-webkit-animation: bgslidea 60s linear infinite;
+}
+.Backgroundb {
+	width: auto;
+	height: 57.6em;
+	bottom: 0px;
+	position: absolute;
+	-webkit-animation: bgslideb 60s linear infinite;
+}
+.GameGround {
+    width: 1638.40px;
+    height: 128px;
+    background-image: url("Images/ground.png");
+    background-repeat: repeat-x;
+    float: bottom;
+    position: absolute;
+    bottom: 0px;
+}
+
+.GameGround.Move {
+	-webkit-animation: slide 0.4s linear infinite;
+}
+
+.Pipes{
+}
+
+.Pipes div{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 7em;
+	height: 40em;
+	background-size: cover;                      /* <------ */
+    background-repeat: no-repeat;
+	background-image: url("Images/pipeNew.png");
+}
+
+
+@-webkit-keyframes slide {
+  from{
+      transform: translate(0px);
+  }
+  to{
+      transform: translate(-74px);
+  }
+}
+@-webkit-keyframes bgslidea {
+  from{
+      transform: translate(153em);
+  }
+  to{
+      transform: translate(0em);
+  }
+}
+@-webkit-keyframes bgslideb {
+  from{
+      transform: translate(0em);
+  }
+  to{
+      transform: translate(-153em);
+  }
+}
+
+@font-face {
+    font-family: FlappyFont;
+    src: url(04B_19__.TTF);
 }
