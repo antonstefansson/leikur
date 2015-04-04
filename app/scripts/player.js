@@ -8,14 +8,13 @@ window.Player = (function() {
 	var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 5;
 	var HEIGHT = 5;
-	var gravity = 0.5;
+	var gravity = 1.3;
 	var velocity = 0;
-	var rotation = 0;
 	var INITIAL_POSITION_X;
 	var INITIAL_POSITION_Y;
 	var frame = 0;
 	var animation = [0,1,2,1];
-	var gameStarted = false;
+	var isDiving = false;
 
 	var Player = function(el, game) {
 		this.el = el;
@@ -37,14 +36,22 @@ window.Player = (function() {
 
 	Player.prototype.onFrame = function(delta) {
 		if (Controls.keys.space) {
-			SPEED = 50;
+			SPEED = 70;
 			this.pos.y -= delta * SPEED;
-			gameStarted = true;
-			SPEED = 20;
+			SPEED = 0;
+			velocity = 0;
+			document.getElementById('Music').play();
+			this.el.css('transform','translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)', 'rotate(60)');
 		}
-		if(Controls._onKeyDown && Controls._didJump){
+		if(Controls._onKeyDown && Controls._didJump) {
 			SPEED += gravity;
 			this.pos.y += delta * SPEED;
+			velocity += 1;
+			this.el.css('transform','translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)', 'rotate(60deg)');
+		}
+		if(velocity > 0.5) {
+			//this.el.find('.Player').removeClass('fly');
+			//this.el.find('.Player').addClass('dive');
 		}
 		this.checkCollisionWithBounds();
 
@@ -56,7 +63,7 @@ window.Player = (function() {
 		if (this.pos.x < 0 ||
 			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
 			this.pos.y < 0 ||
-			this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
+			this.pos.y + HEIGHT > this.game.WORLD_HEIGHT - 12.5) {
 			return this.game.gameover();
 		}
 	};

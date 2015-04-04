@@ -51,6 +51,8 @@ window.Game = (function() {
 	Game.prototype.start = function() {
 		this.reset();
 		this.el.find('.GameGround').addClass('Move');
+		this.el.find('.Player').addClass('flapping');
+		this.el.find('.Scoreboard').removeClass('ScoreboardDelay');
 		// Restart the onFrame loop
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
@@ -64,7 +66,7 @@ window.Game = (function() {
 		this.player.reset();
 		this.pipe.reset();
 		if(!mute){
-			document.getElementById("Music").load();
+			document.getElementById('Music').load();
 		}
 		score = 0;
 		$( '.Score' ).text( ''+ score );
@@ -77,12 +79,14 @@ window.Game = (function() {
 		this.isPlaying = false;
 		if(!mute){
 			document.getElementById('Die').play();
-			document.getElementById("Music").pause();
+			document.getElementById('Music').pause();
 		}
 		// Should be refactored into a Scoreboard class.
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');
 		this.el.find('.GameGround').removeClass('Move');
+		this.el.find('.Player').removeClass('flapping');
+		this.el.find('.Scoreboard').addClass('ScoreboardDelay');
 	
 		if(score > topScore){
 			topScore = score;
@@ -108,16 +112,16 @@ window.Game = (function() {
 		}
 	};
 
-	$( ".Mute" ).click(function() {
+	$( '.Mute' ).click(function() {
 		if(mute){
-			document.getElementById("Music").play();
-			$(".Mute").attr("src","styles/Images/muteoff.png");
+			document.getElementById('Music').play();
+			$('.Mute').attr('src','styles/Images/muteoff.png');
 		}
 		else{
-			document.getElementById("Music").pause();
-			$(".Mute").attr("src","styles/Images/muteon.png");
+			document.getElementById('Music').pause();
+			$('.Mute').attr('src','styles/Images/muteon.png');
 		}
-  		mute = !mute;
+		mute = !mute;
 	});
 
 	/**

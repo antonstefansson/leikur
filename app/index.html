@@ -30,13 +30,16 @@
             <source src="styles/sfx_hit.ogg" type="audio/ogg">
         </Video>
         <Video id="Music" controls autoplay>
+            <source src="styles/sfx_wing.ogg" type="audio/mp3">
+        </Video>
+        <Video id="flap" controls autoplay>
             <source src="styles/Life of Riley.mp3" type="audio/mp3">
         </Video>
 
         <div class="GameCanvas">
             <img class="Backgrounda" src="styles/Images/background.png"></img>
             <img class="Backgroundb" src="styles/Images/background.png"></img>
-            <div class="Player"></div>
+            <div class="Player flapping"></div>
             
             <div class="Pipes">
                 <div id="pipe1"></div>
@@ -49,7 +52,7 @@
             <div class="GameGround Move"></div>
 
             <p class="Score">score</p>
-            <div class="Scoreboard">
+            <div class="Scoreboard ScoreboardDelay">
                 <p class="SScore">Score:</p>
                 <p class="SScore Cur"></p>
                 <p class="SScore">Top Score:</p>

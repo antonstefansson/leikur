@@ -26,7 +26,7 @@ window.Pipe = (function() {
 			this.poss[i].x = INITIAL_POSITION_X+i*20;
 			this.poss[i].y = INITIAL_POSITION_Y+rand;
 			this.poss[i+1].x = INITIAL_POSITION_X+i*20;
-			this.poss[i+1].y = -30 + rand;
+			this.poss[i+1].y = -33 + rand;
 			this.poss[i].done = false;
 			this.poss[i+1].done = false;
 		}
@@ -46,7 +46,7 @@ window.Pipe = (function() {
 				this.poss[i].x = INITIAL_POSITION_X;
 				this.poss[i].y = INITIAL_POSITION_Y+rand;
 				this.poss[i+1].x = INITIAL_POSITION_X;
-				this.poss[i+1].y = -30 + rand;
+				this.poss[i+1].y = -33 + rand;
 				this.poss[i].done = false;
 				this.poss[i+1].done = false;
 			}
@@ -62,6 +62,9 @@ window.Pipe = (function() {
 				((this.player.pos.x+5) > this.poss[i].x && this.player.pos.x < (this.poss[i].x+WIDTH) &&
 				 this.player.pos.y+5 > this.poss[i].y && this.player.pos.y+5 < this.poss[i].y+HEIGHT)
 				){
+				while(this.player.pos.y  < this.game.WORLD_HEIGHT - 12.5) {
+					this.player.pos.y += 1;
+				}
 				return this.game.gameover();
 			}
 

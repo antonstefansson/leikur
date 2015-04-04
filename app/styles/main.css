@@ -4,9 +4,40 @@
 	left: 0;
 	width: 5em;
 	height: 5em;
-	background-image: url("../images/idle/frame-1.png");
+	background-size: cover;                      /* <------ */
+    background-repeat: no-repeat;
+    background-image: url("Images/idle/frame-1.png");
 }
-
+.flapping {
+	-webkit-animation-name: flaps;
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-iteration-count: infinite;
+}
+.diving {
+	-webkit-animation-name: dive;
+	-webkit-animation-duration: 3s;
+}
+@-webkit-keyframes dive {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(90deg);
+  }
+}
+.flying {
+	-webkit-animation-name: fly;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+}
+@-webkit-keyframes fly {
+  from {
+    -webkit-transform: translate(0px) rotate(0deg);
+  }
+  to { 
+    -webkit-transform: translate(100px) rotate(90deg);
+  }
+}
 .Scoreboard {
 	position: absolute;
 	left: 50%;
@@ -22,6 +53,9 @@
     border-width: 2px;
 	-webkit-transform: translate(0, -40em);
 	-webkit-transition: -webkit-transform 0.5s;
+}
+.ScoreboardDelay{
+	-webkit-transition-delay: 1s;
 }
 
 .SScore {
@@ -136,7 +170,23 @@ background: linear-gradient(cyan, white);
     background-repeat: no-repeat;
 	background-image: url("Images/pipeNew.png");
 }
-
+@-webkit-keyframes flaps{
+  from {
+    background-image: url("Images/idle/frame-1.png");
+  }
+  25.0% {
+    background-image: url("Images/idle/frame-2.png");
+  }
+  50.0% {
+    background-image: url("Images/idle/frame-3.png");
+  }
+  75.0% {
+    background-image: url("Images/idle/frame-4.png");
+  }
+  to {
+    background-image: url("Images/idle/frame-1.png");
+  }
+}
 
 @-webkit-keyframes slide {
   from{
@@ -162,6 +212,8 @@ background: linear-gradient(cyan, white);
       transform: translate(-153em);
   }
 }
+
+
 
 @font-face {
     font-family: FlappyFont;
