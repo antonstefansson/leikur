@@ -34,13 +34,15 @@ window.Pipe = (function() {
 
 	Pipe.prototype.onFrame = function(delta) {
 
-		for(var i = 0; i<6; i++){
+		var i;
+
+		for(i = 0; i<6; i++){
 			this.poss[i].x -= delta * SPEED;
 		}
 
 		this.checkCollisionWithBounds();
 
-		for(var i = 0; i<6; i+=2){
+		for(i = 0; i<6; i+=2){
 			if(this.poss[i].x <= -WIDTH){
 				var rand = Math.floor( Math.random() * ( 1 + 15 - 0 ) ) + 0;
 				this.poss[i].x = INITIAL_POSITION_X;
