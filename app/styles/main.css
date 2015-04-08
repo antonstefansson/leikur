@@ -13,7 +13,7 @@
 	-webkit-animation-duration: 0.3s;
 	-webkit-animation-iteration-count: infinite;
 }
-.diving {
+/*.diving {
 	-webkit-animation-name: dive;
 	-webkit-animation-duration: 3s;
 }
@@ -38,6 +38,7 @@
     -webkit-transform: translate(100px) rotate(90deg);
   }
 }
+*/
 .Scoreboard {
 	position: absolute;
 	left: 50%;

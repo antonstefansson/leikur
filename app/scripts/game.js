@@ -59,6 +59,9 @@ window.Game = (function() {
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
 	};
+	Game.prototype.isMute = function() {
+		return mute;
+	};
 
 	/**
 	 * Resets the state of the game so a new game can be started.
@@ -123,6 +126,7 @@ window.Game = (function() {
 			$('.Mute').attr('src','styles/Images/muteon.png');
 		}
 		mute = !mute;
+
 	});
 
 	/**

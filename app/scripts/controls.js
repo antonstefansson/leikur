@@ -10,7 +10,7 @@ window.Controls = (function() {
     };
     var MOUSE = {
         0: 'mouse1'
-    }
+    };
     /**
      * A singleton class which abstracts all player input,
      * should hide complexity of dealing with keyboard, mouse
@@ -45,7 +45,7 @@ window.Controls = (function() {
         if(e.button in MOUSE) {
             var mouseName = MOUSE[e.button];
             this.mouse[mouseName] = true;
-            return false
+            return false;
         }
     };
     Controls.prototype._onKeyUp = function(e) {

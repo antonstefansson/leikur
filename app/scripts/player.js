@@ -41,7 +41,7 @@ window.Player = (function() {
 			this.pos.y -= delta * SPEED;
 			SPEED = 0;
 			rotate -= 20;
-			if(!this.game.mute){
+			if(!this.game.isMute()){
 				document.getElementById('flap').play();
 			}
 			this.el.css('transform','translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate('+ rotate + 'deg)');
